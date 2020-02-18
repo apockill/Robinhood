@@ -716,8 +716,8 @@ class Robinhood:
         stock_instrument = self.get_url(self.quote_data(stock)["instrument"])[
             "id"]
         return \
-        self.get_url(endpoints.instruments(stock_instrument, "popularity"))[
-            "num_open_positions"]
+            self.get_url(endpoints.instruments(stock_instrument, "popularity"))[
+                "num_open_positions"]
 
     def get_tickers_by_tag(self, tag=None):
         """Get a list of instruments belonging to a tag
@@ -785,6 +785,15 @@ class Robinhood:
     ###########################################################################
     #                           GET OPTIONS INFO
     ###########################################################################
+
+    @login_required
+    def get_settled_transactions(self):
+        """Queries the robinhood Cash API to get all debit card transactions.
+        """
+
+        res = self.session.get(endpoints.settled_transactions(), timeout=15)
+        res.raise_for_status()
+        return res.json()
 
     def get_options(self, stock, expiration_dates, option_type):
         """Get a list (chain) of options contracts belonging to a particular stock
