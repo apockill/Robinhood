@@ -40,6 +40,10 @@ def settled_transactions():
     return "https://minerva.robinhood.com/history/settled_transactions/"
 
 
+def sweeps():
+    return accounts() + "/sweeps/"
+
+
 def edocuments():
     return api_url + "/documents/"
 

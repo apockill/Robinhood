@@ -795,6 +795,15 @@ class Robinhood:
         res.raise_for_status()
         return res.json()
 
+    @login_required
+    def get_sweeps(self):
+        """Queries the robinhood Cash API to get all debit card transactions.
+        """
+
+        res = self.session.get(endpoints.sweeps(), timeout=15)
+        res.raise_for_status()
+        return res.json()
+
     def get_options(self, stock, expiration_dates, option_type):
         """Get a list (chain) of options contracts belonging to a particular stock
 
