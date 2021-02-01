@@ -40,6 +40,10 @@ def settled_transactions():
     return "https://minerva.robinhood.com/history/settled_transactions/"
 
 
+def crypto_orders():
+    return "https://nummus.robinhood.com/orders/"
+
+
 def sweeps():
     return accounts() + "/sweeps/"
 

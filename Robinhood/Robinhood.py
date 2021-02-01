@@ -796,6 +796,13 @@ class Robinhood:
         return res.json()
 
     @login_required
+    def crypto_orders(self):
+        """Returns crypto order history"""
+        res = self.session.get(endpoints.crypto_orders(), timeout=15)
+        res.raise_for_status()
+        return res.json()
+
+    @login_required
     def get_sweeps(self):
         """Queries the robinhood Cash API to get all debit card transactions.
         """
